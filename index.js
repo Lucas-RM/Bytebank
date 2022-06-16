@@ -1,44 +1,38 @@
-class Cliente{
-    nome
-    cpf
-}
+/**
+ * npm init
+ * "name": "bytebank"
+ * "description": "Projeto do bytebank para seus clientes"
+ * "type": "module"
+ * 
+ */
 
-class ContaCorrente{
-    agencia;
-    _saldo = 0; // #saldo = 0 https://github.com/tc39/proposal-class-fields#private-fields
+import { Cliente } from "./Cliente.js"
+import { ContaCorrente } from "./ContaCorrente.js"
 
-    sacar(valor){
-        if(this._saldo >= valor){
-            this._saldo -= valor;
-            return valor;
-        }
-    }
+const cliente1 = new Cliente()
+cliente1.nome = "Ricardo"
+cliente1.cpf = 11122233309
 
-    depositar(valor){
-        if(valor <= 0)
-        {
-            return;
-        } 
-        this._saldo += valor;           
-    }
-}
+const cliente2 = new Cliente()
+cliente2.nome = "Alice"
+cliente2.cpf = 88822233309
 
-const cliente1 = new Cliente();
-cliente1.nome = "Ricardo";
-cliente1.cpf = 11122233309;
-
-const cliente2 = new Cliente();
-cliente2.nome = "Alice";
-cliente2.cpf = 88822233309;
 
 const contaCorrenteRicardo = new ContaCorrente();
-contaCorrenteRicardo.agencia = 1001;
+contaCorrenteRicardo.agencia = 1001
+contaCorrenteRicardo.cliente = cliente1
+contaCorrenteRicardo.depositar(500)
 
-contaCorrenteRicardo.depositar(100);
-contaCorrenteRicardo.depositar(-100);
-contaCorrenteRicardo.depositar(100);
+const contaCorrenteAlice = new ContaCorrente()
+contaCorrenteAlice.cliente = cliente2
+contaCorrenteAlice.agencia = 102
 
-const valorSacado = contaCorrenteRicardo.sacar(50);
-console.log(valorSacado);
+let valorDeTransferencia = 200;
+contaCorrenteRicardo.transferir(valorDeTransferencia, contaCorrenteAlice)
 
-console.log(contaCorrenteRicardo);
+console.log("Valor de Tranferência (Ricardo para Alice): ", valorDeTransferencia)
+console.log('\n=-=-= Conta Alice =-=-=')
+console.log(contaCorrenteAlice)
+
+console.log('\n=-=-= Conta Ricardo =-=-=')
+console.log(contaCorrenteRicardo)

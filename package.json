@@ -1,0 +1,16 @@
+{
+  "name": "bytebank",
+  "version": "1.0.0",
+  "description": "Projeto do bytebank para seus clientes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-profissional:Lucas-RM/Bytebank.git"
+  },
+  "author": "Lucas",
+  "license": "MIT",
+  "type": "module"
+}
